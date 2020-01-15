@@ -1,4 +1,4 @@
-from peewee import (BigIntegerField, SmallIntegerField, CharField, TextField, BooleanField)
+from peewee import (BigIntegerField, SmallIntegerField, CharField, TextField, BooleanField, BigAutoField)
 
 from rowboat.sql import ModelBase
 from rowboat.models.message import Message
@@ -6,7 +6,7 @@ from rowboat.models.message import Message
 
 @ModelBase.register
 class Channel(ModelBase):
-    channel_id = AutoField(primary_key=True)
+    channel_id = BigAutoField(primary_key=True)
     guild_id = BigIntegerField(null=True)
     name = CharField(null=True, index=True)
     topic = TextField(null=True)

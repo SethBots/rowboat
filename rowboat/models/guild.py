@@ -2,7 +2,7 @@ import yaml
 import logging
 
 from peewee import (
-    BigIntegerField, CharField, TextField, BooleanField, DateTimeField, CompositeKey, BlobField
+    BigIntegerField, CharField, TextField, BooleanField, DateTimeField, CompositeKey, BlobField, BigAutoField
 )
 from holster.enum import Enum
 from datetime import datetime
@@ -23,7 +23,7 @@ class Guild(ModelBase):
         bitmask=False
     )
 
-    guild_id = AutoField(primary_key=True)
+    guild_id = BigAutoField(primary_key=True)
     owner_id = BigIntegerField(null=True)
     name = TextField(null=True)
     icon = TextField(null=True)
@@ -155,7 +155,7 @@ class Guild(ModelBase):
 
 @ModelBase.register
 class GuildEmoji(ModelBase):
-    emoji_id = AutoField(primary_key=True)
+    emoji_id = BigAutoField(primary_key=True)
     guild_id = BigIntegerField()
     name = CharField(index=True)
 

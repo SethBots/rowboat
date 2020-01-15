@@ -6,7 +6,7 @@ import traceback
 
 from peewee import (
     BigIntegerField, ForeignKeyField, TextField, DateTimeField,
-    BooleanField, UUIDField
+    BooleanField, UUIDField, BigAutoField
 )
 from datetime import datetime, timedelta
 from playhouse.postgres_ext import BinaryJSONField, ArrayField
@@ -22,7 +22,7 @@ EMOJI_RE = re.compile(r'<:.+:([0-9]+)>')
 
 @ModelBase.register
 class Message(ModelBase):
-    id = AutoField(primary_key=True)
+    id = BigAutoField(primary_key=True)
     channel_id = BigIntegerField()
     guild_id = BigIntegerField(null=True)
     author = ForeignKeyField(User)
@@ -363,7 +363,7 @@ class StarboardEntry(ModelBase):
 
 @ModelBase.register
 class Reminder(ModelBase):
-    message_id = AutoField(primary_key=True)
+    message_id = BigAutoField(primary_key=True)
 
     created_at = DateTimeField(default=datetime.utcnow)
     remind_at = DateTimeField()
@@ -397,7 +397,7 @@ class Reminder(ModelBase):
 
 @ModelBase.register
 class Command(ModelBase):
-    message_id = AutoField(primary_key=True)
+    message_id = BigAutoField(primary_key=True)
 
     plugin = TextField()
     command = TextField()

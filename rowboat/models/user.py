@@ -2,7 +2,7 @@ import humanize
 
 from datetime import datetime
 from holster.enum import Enum
-from peewee import BigIntegerField, IntegerField, SmallIntegerField, TextField, BooleanField, DateTimeField
+from peewee import BigIntegerField, IntegerField, SmallIntegerField, TextField, BooleanField, DateTimeField, BigAutoField
 from playhouse.postgres_ext import BinaryJSONField
 
 from rowboat.sql import ModelBase
@@ -10,7 +10,7 @@ from disco.api.http import APIException
 
 @ModelBase.register
 class User(ModelBase):
-    user_id = AutoField(primary_key=True)
+    user_id = BigAutoField(primary_key=True)
     username = TextField()
     discriminator = SmallIntegerField()
     avatar = TextField(null=True)
