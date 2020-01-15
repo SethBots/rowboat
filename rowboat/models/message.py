@@ -22,7 +22,7 @@ EMOJI_RE = re.compile(r'<:.+:([0-9]+)>')
 
 @ModelBase.register
 class Message(ModelBase):
-    id = BigIntegerField(primary_key=True)
+    id = AutoField(primary_key=True)
     channel_id = BigIntegerField()
     guild_id = BigIntegerField(null=True)
     author = ForeignKeyField(User)
@@ -363,7 +363,7 @@ class StarboardEntry(ModelBase):
 
 @ModelBase.register
 class Reminder(ModelBase):
-    message_id = BigIntegerField(primary_key=True)
+    message_id = AutoField(primary_key=True)
 
     created_at = DateTimeField(default=datetime.utcnow)
     remind_at = DateTimeField()
@@ -397,7 +397,7 @@ class Reminder(ModelBase):
 
 @ModelBase.register
 class Command(ModelBase):
-    message_id = BigIntegerField(primary_key=True)
+    message_id = AutoField(primary_key=True)
 
     plugin = TextField()
     command = TextField()

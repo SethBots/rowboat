@@ -10,7 +10,7 @@ from disco.api.http import APIException
 
 @ModelBase.register
 class User(ModelBase):
-    user_id = BigIntegerField(primary_key=True)
+    user_id = AutoField(primary_key=True)
     username = TextField()
     discriminator = SmallIntegerField()
     avatar = TextField(null=True)

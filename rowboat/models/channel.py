@@ -6,7 +6,7 @@ from rowboat.models.message import Message
 
 @ModelBase.register
 class Channel(ModelBase):
-    channel_id = BigIntegerField(primary_key=True)
+    channel_id = AutoField(primary_key=True)
     guild_id = BigIntegerField(null=True)
     name = CharField(null=True, index=True)
     topic = TextField(null=True)
